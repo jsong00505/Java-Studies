@@ -24,7 +24,7 @@ public class TwoSum {
         		}
         	}
         }
-        int[] result = {-1, -1};
+        int[] result = {0, 0};
         return result;
     }
 }
