@@ -8,17 +8,64 @@ public class LongestPalindrome {
      * Palindrome is a word, phrase, or sequence that reads the same backward as forward
      * ex) madam, nurses run
      *
-     * sol1: double for loop - the simplest way to solve
-     * sol2: using regular expression - just my opinion I don't know how to imple yet...
+     * sol1: double for loop - the simplest way to solve - referenced by failed #2 TIME LIMIT EXCEEDED
+     * sol2: using regular expression - just my opinion, and I don't know how to implement yet...
+     * 
+     * failed
+     * 1. I just checked odd numbers of string's length -> need to add to check even one by 16.10.31
+     * 2. TIME LIMIT EXCEEDED -> "ibvjkmpyzsifuxcabqqpahjdeuzaybqsrsmbfplxycsafogotliyvhxjtkrbzqxlyfwujzhkdafhebvsdhkkdbhlhmaoxmbkqiwiusngkbdhlvxdyvnjrzvxmukvdfobzlmvnbnilnsyrgoygfdzjlymhprcpxsnxpcafctikxxybcusgjwmfklkffehbvlhvxfiddznwumxosomfbgxoruoqrhezgsgidgcfzbtdftjxeahriirqgxbhicoxavquhbkaomrroghdnfkknyigsluqebaqrtcwgmlnvmxoagisdmsokeznjsnwpxygjjptvyjjkbmkxvlivinmpnpxgmmorkasebngirckqcawgevljplkkgextudqaodwqmfljljhrujoerycoojwwgtklypicgkyaboqjfivbeqdlonxeidgxsyzugkntoevwfuxovazcyayvwbcqswzhytlmtmrtwpikgacnpkbwgfmpavzyjoxughwhvlsxsgttbcyrlkaarngeoaldsdtjncivhcfsaohmdhgbwkuemcembmlwbwquxfaiukoqvzmgoeppieztdacvwngbkcxknbytvztodbfnjhbtwpjlzuajnlzfmmujhcggpdcwdquutdiubgcvnxvgspmfumeqrofewynizvynavjzkbpkuxxvkjujectdyfwygnfsukvzflcuxxzvxzravzznpxttduajhbsyiywpqunnarabcroljwcbdydagachbobkcvudkoddldaucwruobfylfhyvjuynjrosxczgjwudpxaqwnboxgxybnngxxhibesiaxkicinikzzmonftqkcudlzfzutplbycejmkpxcygsafzkgudy"
+     * -> I need another solution for that...
      */
     public static String longestPalindrome(String s) {
         int strLen = s.length();
+        String preStr = "";
+        String postStr = "";
+        String longestStr = "";
+        int middle = 0; 
+        // check 
+        for(int i = 0; i<strLen; i++) {
+        	if(i == 0) {
+        		longestStr = s.substring(0, 1);
+    			continue;
+    		}
+        	for(int j = 0; j<strLen-i;j++) {
+        		/*
+        		if((j+i+1) == s.length()) {
+            		System.out.println("str: " + s.substring(j));
+        		}else {
+            		System.out.println("str: " + s.substring(j, j+i+1));
+        		} */
 
-        for(int i = 0; i<strLen; i=i+2) {
-            String rev = reverseString(s.substring(i,i));
+
+        		// get middle index of string
+        		middle = ((j+i) + j) / 2;
+        		if(i % 2 != 0) {
+        			//EVEN
+        			preStr = s.substring(j,middle+1);
+        		} else {
+        			//ODD
+            		preStr = s.substring(j,middle);
+        		}
+
+        		//System.out.println("i: " + i + ", j: " + j+ ", m: " + middle);
+        		if((j+i+1) == s.length()) {
+        			postStr = s.substring(middle+1);
+        		}else {
+        			postStr = s.substring(middle+1, j+i+1);
+        		}
+        		
+        		//System.out.println("postStr: " + postStr);
+        		postStr = reverseString(postStr);
+        		//System.out.println("PRE: " + preStr + ", POST: " + postStr);
+        		if(preStr.equals(postStr)) {
+        			longestStr = s.substring(j, j+i+1);
+        			break;
+        		}
+        	}
+        	 //System.out.println(">> DONE");
         }
-        reverseString(s);
-        return s;
+        //System.out.println(">> longest: " + longestStr);
+        return longestStr;
     }
 
     /*
@@ -34,7 +81,7 @@ public class LongestPalindrome {
         
         sb.append(src);
         dest = sb.reverse().toString();
-
+        //System.out.println("dest: " + dest + ", sb.reverse: " + sb.reverse() + ", src: " + src);
         return dest;
         
     }
