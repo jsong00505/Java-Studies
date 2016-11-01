@@ -31,8 +31,39 @@ public class ZigZagConversion {
 	 * 4       10      16     -> 6
 	 * 
 	 * yeah, you can see the rule.
+	 * 
+	 * Mine beats 63.81% of java submissions. Pretty neat!
 	 */
-    public String convert(String s, int numRows) {
-        return "";
+    public static String convert(String s, int numRows) {
+        int interval = 2 * (numRows - 1);
+        StringBuilder result = new StringBuilder();
+        // this for loop is for checking number of rows.
+        for(int i=0;i<numRows;i++) {
+            // checking how to make the zigzag
+            // 0:none , 1:left, 2:right
+            String checkInterval = "1";
+            int j = i;
+            int leftInterval = interval - i*2;
+            int rightInterval = interval - (numRows-i-1)*2;
+            
+            if(leftInterval == interval || rightInterval == interval) {
+                checkInterval = "0";
+            }
+            while(j < s.length()) {
+                result.append(s.charAt(j));
+                if(interval == 0) {
+                    j++;
+                }else if("0".equals(checkInterval)) {
+                    j += interval;
+                }else if("1".equals(checkInterval)){
+                    checkInterval = "2";
+                    j += leftInterval;
+                }else {
+                    checkInterval = "1";
+                    j += rightInterval;
+                }
+            }
+        }
+        return result.toString();
     }
 }

@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.HashMap;
 
 import org.junit.Test;
 
@@ -29,7 +30,7 @@ public class UtilsTest {
 	 * reference: https://www.lesstif.com/pages/viewpage.action?pageId=14745703
 	 * >> this source doesn't work so far by 01/11/16
 	 */
-	@Test
+	//@Test
 	public void CURLTest() throws IOException {
 		StringBuilder cURLQuery = new StringBuilder();
 		String destUrl = "https://staging.nicepay.co.kr/api/chackBankAccount.jsp";
@@ -61,5 +62,26 @@ public class UtilsTest {
 			System.out.println("ERROR: " + e);
 		}
 		System.out.println("OUTPUT::: "+output.toString());
+	}
+	
+	/*
+	 * How to make char to String
+	 * ----------------------------
+	 * String.valueOf('c') : most efficient
+	 * Character.toString('c')
+	 * new Character.toString('c')
+	 * "" + 'c'
+	 */
+	@Test
+	public void stringCharAtTest() {
+		String str = "Hello World!";
+		HashMap<String, Integer> hm = new HashMap<>();
+		hm.put("H", 1);
+		StringBuilder sb = new StringBuilder();
+		sb.append("b: ").append(str.charAt(0));
+		
+		System.out.println("charAt: " + "A".charAt(0));
+		System.out.println(hm.get(new Character(str.charAt(0)).toString()));
+		System.out.println(sb.toString());
 	}
 }

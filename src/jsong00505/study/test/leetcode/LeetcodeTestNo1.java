@@ -3,6 +3,7 @@ package jsong00505.study.test.leetcode;
 import jsong00505.study.leetcode.no1.FindMedianSortedArrays;
 import jsong00505.study.leetcode.no1.LongestPalindrome;
 import jsong00505.study.leetcode.no1.RomanToInt;
+import jsong00505.study.leetcode.no1.ZigZagConversion;
 
 import org.junit.Test;
 
@@ -33,5 +34,27 @@ public class LeetcodeTestNo1 {
 		System.out.println(RomanToInt.romanToInt(romanStr));
 		// RESULT: 1996
 		System.out.println(RomanToInt.romanToInt(romanStr2));
+	}
+	
+
+	@Test
+	public void zigZagConversionTest() {
+	    System.out.println(":::ZIGZAG COVERSION TEST:::");
+	    String str = "PAYPALIWHISHER";
+	    int rowNums = 3;
+	    System.out.println("MY CASE: " + ZigZagConversion.convert(str, rowNums));
+	    // PAHEAPLWIHRYIS
+	    
+	    String case1 = "A";
+	    System.out.println("CASE1: " + ZigZagConversion.convert(case1, 1));
+	    //result: A
+	    
+	    String case2 = "AB";
+        System.out.println("CASE2: " + ZigZagConversion.convert(case2, 1));
+        //result: AB
+        
+        String case3 = "ABCD";
+        System.out.println("CASE3: " + ZigZagConversion.convert(case3, 4));
+        //result: ABCD
 	}
 }
