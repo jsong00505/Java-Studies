@@ -8,6 +8,8 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.HashMap;
 
+import jsong00505.core.utils.ReverseString;
+
 import org.junit.Test;
 
 public class UtilsTest {
@@ -72,7 +74,7 @@ public class UtilsTest {
 	 * new Character.toString('c')
 	 * "" + 'c'
 	 */
-	@Test
+	//@Test
 	public void stringCharAtTest() {
 		String str = "Hello World!";
 		HashMap<String, Integer> hm = new HashMap<>();
@@ -83,5 +85,17 @@ public class UtilsTest {
 		System.out.println("charAt: " + "A".charAt(0));
 		System.out.println(hm.get(new Character(str.charAt(0)).toString()));
 		System.out.println(sb.toString());
+	}
+	
+	@Test
+	public void integerToStringTest() {
+		int x = -123;
+		boolean negFlag = false;
+		if(x < 0) {
+			negFlag = true;
+		}
+		x = Math.abs(x);
+		String strX = Integer.toString(x);
+		System.out.println(ReverseString.reverseString(strX));
 	}
 }
