@@ -1,14 +1,39 @@
 package jsong00505.study.leetcode.no1;
 
 public class ReverseInteger {
+	
+	/*
+	 * Reverse digits of an integer.
+	 * 
+	 * Example1: x = 123, return 321
+	 * 
+	 * Example2: x = -123, return -321
+	 * 
+	 * Mine beats 30.25% of java submissions.
+	 * 
+	 * - Check this.
+	 *  If the reversed is out of number format, the return should be 0.
+	 *  Don't let the exception occur.
+	 * 
+	 */
 	public static int reverse(int x) {
 		int result = x;
+		String resultStr = "";
 		boolean negFlag = false;
 		if(x < 0) {
 			negFlag = true;
 		}
-		result = Math.abs(result);
-
+		resultStr = reverseString(Integer.toString(Math.abs(x)));
+		
+		if(negFlag) {
+			resultStr = "-"+resultStr;
+		}
+		try {
+			result = Integer.parseInt(resultStr);
+		}catch(NumberFormatException nfe) {
+			result = 0;
+		}
+		
 		return result;
 	}
 	
@@ -18,7 +43,7 @@ public class ReverseInteger {
         
         sb.append(src);
         dest = sb.reverse().toString();
-        //System.out.println("dest: " + dest + ", sb.reverse: " + sb.reverse() + ", src: " + src);
+        
         return dest;
         
     }

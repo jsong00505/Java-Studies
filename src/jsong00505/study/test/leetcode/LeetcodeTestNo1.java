@@ -2,20 +2,21 @@ package jsong00505.study.test.leetcode;
 
 import jsong00505.study.leetcode.no1.FindMedianSortedArrays;
 import jsong00505.study.leetcode.no1.LongestPalindrome;
+import jsong00505.study.leetcode.no1.ReverseInteger;
 import jsong00505.study.leetcode.no1.RomanToInt;
 import jsong00505.study.leetcode.no1.ZigZagConversion;
 
 import org.junit.Test;
 
 public class LeetcodeTestNo1 {
-	@Test
+	//@Test
 	public void longestPalindromeTest() {
 		String str = "aabb";
 		System.out.println(":::LONGEST PALINDROME TEST:::");
 		System.out.println(LongestPalindrome.longestPalindrome(str));
 	}
 	
-	@Test
+	//@Test
 	public void findMedianSortedArraysTest() {
 		int[] x = { 1, 2};
 		int[] y = { 3, 4};
@@ -24,7 +25,7 @@ public class LeetcodeTestNo1 {
 		System.out.println(FindMedianSortedArrays.findMedianSortedArrays(x, y));
 	}
 	
-	@Test
+	//@Test
 	public void romanToIntTest() {
 		String romanStr = "MLCVII";
 		String romanStr2 = "MCMXCVI";
@@ -37,7 +38,7 @@ public class LeetcodeTestNo1 {
 	}
 	
 
-	@Test
+	//@Test
 	public void zigZagConversionTest() {
 	    System.out.println(":::ZIGZAG COVERSION TEST:::");
 	    String str = "PAYPALIWHISHER";
@@ -56,5 +57,19 @@ public class LeetcodeTestNo1 {
         String case3 = "ABCD";
         System.out.println("CASE3: " + ZigZagConversion.convert(case3, 4));
         //result: ABCD
+	}
+	
+	@Test
+	public void reverseIntegerTest() {
+		System.out.println(":::REVERSE INTEGER TEST:::");
+		
+		int case1 = 123;
+		int case2 = -123;
+		int case3 = 1534236469;
+		
+		System.out.println("CASE1: " + ReverseInteger.reverse(case1));
+		System.out.println("CASE2: " + ReverseInteger.reverse(case2));
+		System.out.println("CASE3: " + ReverseInteger.reverse(case3));
+		
 	}
 }
