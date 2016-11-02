@@ -4,6 +4,7 @@ import jsong00505.study.leetcode.no1.FindMedianSortedArrays;
 import jsong00505.study.leetcode.no1.LongestPalindrome;
 import jsong00505.study.leetcode.no1.ReverseInteger;
 import jsong00505.study.leetcode.no1.RomanToInt;
+import jsong00505.study.leetcode.no1.StringToInteger;
 import jsong00505.study.leetcode.no1.ZigZagConversion;
 
 import org.junit.Test;
@@ -59,7 +60,7 @@ public class LeetcodeTestNo1 {
         //result: ABCD
 	}
 	
-	@Test
+	//@Test
 	public void reverseIntegerTest() {
 		System.out.println(":::REVERSE INTEGER TEST:::");
 		
@@ -71,5 +72,30 @@ public class LeetcodeTestNo1 {
 		System.out.println("CASE2: " + ReverseInteger.reverse(case2));
 		System.out.println("CASE3: " + ReverseInteger.reverse(case3));
 		
+	}
+	
+	@Test
+	public void stringToIntegerTest() {
+		System.out.println(":::STRING TO INTEGER TEST:::");
+		
+		String case1 = "100";			// 100
+		String case2 = "-100";			// -100
+		String case3 = "NOINT";			// 0
+		String case4 = "    010";		// 10
+		String case5 = "  -0012a42";	// -12
+		String case6 = "aa12";			// 0
+		String case7 = "   +0 123";		// 123
+		String case8 = "2147483648";	// 2147483647
+		String case9 = "-2147483649";	// -2147483648
+		
+		System.out.println("CASE1: " + StringToInteger.myAtoi(case1));
+		System.out.println("CASE2: " + StringToInteger.myAtoi(case2));
+		System.out.println("CASE3: " + StringToInteger.myAtoi(case3));
+		System.out.println("CASE4: " + StringToInteger.myAtoi(case4));
+		System.out.println("CASE5: " + StringToInteger.myAtoi(case5));
+		System.out.println("CASE6: " + StringToInteger.myAtoi(case6));
+		System.out.println("CASE7: " + StringToInteger.myAtoi(case7));
+		System.out.println("CASE8: " + StringToInteger.myAtoi(case8));
+		System.out.println("CASE9: " + StringToInteger.myAtoi(case9));
 	}
 }
