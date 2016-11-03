@@ -9,6 +9,8 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 
 
+
+import jsong00505.core.utils.CheckStringFormat;
 import jsong00505.core.utils.ReverseString;
 
 import org.junit.Test;
@@ -98,5 +100,20 @@ public class UtilsTest {
 		x = Math.abs(x);
 		String strX = Integer.toString(x);
 		System.out.println(ReverseString.reverseString(strX));
+	}
+	
+	@Test
+	public void stringFormatTest() {
+		String case1 = "111111111111111";
+		String case2 = "1111111111111111111a";
+		String case3 = "-1111111111111111111";
+		String case4 = " ";
+		
+		
+		System.out.println("Case1 is Numeric? "+ CheckStringFormat.isNumericString(case1));
+		System.out.println("Case2 is Numeric? "+ CheckStringFormat.isNumericString(case2));
+		System.out.println("Case3 is Numeric? "+ CheckStringFormat.isNumericString(case3));
+		System.out.println(" ".equals(""+case4.charAt(0)));
+		
 	}
 }

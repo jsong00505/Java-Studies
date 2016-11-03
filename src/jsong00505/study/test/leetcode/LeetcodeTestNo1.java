@@ -1,5 +1,6 @@
 package jsong00505.study.test.leetcode;
 
+import static org.junit.Assert.*;
 import jsong00505.study.leetcode.no1.FindMedianSortedArrays;
 import jsong00505.study.leetcode.no1.LongestPalindrome;
 import jsong00505.study.leetcode.no1.ReverseInteger;
@@ -86,16 +87,24 @@ public class LeetcodeTestNo1 {
 		String case6 = "aa12";			// 0
 		String case7 = "   +0 123";		// 123
 		String case8 = "2147483648";	// 2147483647
-		String case9 = "-2147483649";	// -2147483648
+		String case9 = "+2147483648";	// 2147483647
+		String case10 = "-2147483649";	// -2147483648
+		String case11 = "123   456";	// 123
+		String case12 = "";
 		
-		System.out.println("CASE1: " + StringToInteger.myAtoi(case1));
-		System.out.println("CASE2: " + StringToInteger.myAtoi(case2));
-		System.out.println("CASE3: " + StringToInteger.myAtoi(case3));
-		System.out.println("CASE4: " + StringToInteger.myAtoi(case4));
-		System.out.println("CASE5: " + StringToInteger.myAtoi(case5));
-		System.out.println("CASE6: " + StringToInteger.myAtoi(case6));
-		System.out.println("CASE7: " + StringToInteger.myAtoi(case7));
-		System.out.println("CASE8: " + StringToInteger.myAtoi(case8));
-		System.out.println("CASE9: " + StringToInteger.myAtoi(case9));
+		
+		assertEquals(100, StringToInteger.myAtoi(case1), 0);
+		assertEquals(-100, StringToInteger.myAtoi(case2), 0);
+		assertEquals(0, StringToInteger.myAtoi(case3), 0);
+		assertEquals(10, StringToInteger.myAtoi(case4), 0);
+		assertEquals(-12, StringToInteger.myAtoi(case5), 0);
+		assertEquals(0, StringToInteger.myAtoi(case6), 0);
+		assertEquals(123, StringToInteger.myAtoi(case7), 0);
+		assertEquals(2147483647, StringToInteger.myAtoi(case8), 0);
+		assertEquals(2147483647, StringToInteger.myAtoi(case9), 0);
+		assertEquals(-2147483648, StringToInteger.myAtoi(case10), 0);
+		assertEquals(123, StringToInteger.myAtoi(case11), 0);
+		assertEquals(0, StringToInteger.myAtoi(case12), 0);
+
 	}
 }

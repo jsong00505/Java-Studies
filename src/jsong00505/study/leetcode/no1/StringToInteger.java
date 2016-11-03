@@ -30,6 +30,10 @@ public class StringToInteger {
 	 * problem4: strip whitespaces
 	 * 
 	 * problem5: overflow
+	 * 
+	 * problems: you could see how many errors I faces. *Shake My Head*
+	 * I need to fix my whole logic. (03/11/16)
+	 * 
 	 */
     public static int myAtoi(String str) {
     	int result = 0;
@@ -39,20 +43,16 @@ public class StringToInteger {
     		str = str.trim();
     		result = Integer.parseInt(str);
     	}catch(NumberFormatException nfe) {
-    		if((csf.isAlphaNumericString(str) && !csf.isAlphabeticString(str)) || str.startsWith("-") || str.startsWith("+")) {
+  		
+    		
+    		if(str.startsWith("-") && csf.isNumericString(str.substring(1))) {
+    			result = -2147483648;
+    		} else if(str.startsWith("+") && csf.isNumericString(str.substring(1))) { 
+    			result = 2147483647;
+    		} else if(csf.isNumericString(str)) {
+    			result = 2147483647;
+    		}
 
-    			for(int i=0;i<str.length();i++) {
-    				if(csf.isAlphabeticString(""+str.charAt(i))) {
-    					try {
-    						result = Integer.parseInt(str.substring(0,i));
-    					}catch(Exception ie) {
-    						System.out.println("E: "+ie);
-    					}
-    				}
-    			}
-    			
-    		} 
-    		System.out.println(nfe);
     	}
         return result;
     }
