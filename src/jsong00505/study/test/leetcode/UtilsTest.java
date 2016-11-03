@@ -8,6 +8,7 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.HashMap;
 
+
 import jsong00505.core.utils.ReverseString;
 
 import org.junit.Test;
@@ -87,7 +88,7 @@ public class UtilsTest {
 		System.out.println(sb.toString());
 	}
 	
-	@Test
+	//@Test
 	public void integerToStringTest() {
 		int x = -123;
 		boolean negFlag = false;
