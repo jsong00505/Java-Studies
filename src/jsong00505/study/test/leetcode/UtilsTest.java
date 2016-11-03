@@ -1,5 +1,7 @@
 package jsong00505.study.test.leetcode;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -107,13 +109,16 @@ public class UtilsTest {
 		String case1 = "111111111111111";
 		String case2 = "1111111111111111111a";
 		String case3 = "-1111111111111111111";
-		String case4 = " ";
+		String case4 = "+1111111111111111111";
+		String case5 = " ";
 		
-		
-		System.out.println("Case1 is Numeric? "+ CheckStringFormat.isNumericString(case1));
-		System.out.println("Case2 is Numeric? "+ CheckStringFormat.isNumericString(case2));
-		System.out.println("Case3 is Numeric? "+ CheckStringFormat.isNumericString(case3));
-		System.out.println(" ".equals(""+case4.charAt(0)));
+		assertEquals(true, CheckStringFormat.isNumericString(case1));
+		assertEquals(false, CheckStringFormat.isNumericString(case2));
+		assertEquals(false, CheckStringFormat.isNumericString(case3));
+		assertEquals(false, CheckStringFormat.isNumericString(case4));
+		assertEquals(true, " ".equals(""+case5.charAt(0)));
+		assertEquals(false, " ".equals(case5.charAt(0)));
+
 		
 	}
 }
