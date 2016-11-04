@@ -1,12 +1,8 @@
 package jsong00505.study.test.leetcode;
 
 import static org.junit.Assert.*;
-import jsong00505.study.leetcode.no1.FindMedianSortedArrays;
-import jsong00505.study.leetcode.no1.LongestPalindrome;
-import jsong00505.study.leetcode.no1.ReverseInteger;
-import jsong00505.study.leetcode.no1.RomanToInt;
-import jsong00505.study.leetcode.no1.StringToInteger;
-import jsong00505.study.leetcode.no1.ZigZagConversion;
+
+import jsong00505.study.leetcode.no1.*;
 
 import org.junit.Test;
 
@@ -75,7 +71,7 @@ public class LeetcodeTestNo1 {
 		
 	}
 	
-	@Test
+	//@Test
 	public void stringToIntegerTest() {
 		System.out.println(":::STRING TO INTEGER TEST:::");
 		
@@ -106,5 +102,18 @@ public class LeetcodeTestNo1 {
 		assertEquals(123, StringToInteger.myAtoi(case11), 0);
 		assertEquals(0, StringToInteger.myAtoi(case12), 0);
 
+	}
+
+	@Test
+	public void frequencySortTest() {
+		String case1 = "aaaccbbb";
+		String case2 = "tree";
+		String case3 = "cccaaa";
+		String case4 = "Aabb";
+
+		SortCharactersByFrequency.frequencySort(case1);
+		SortCharactersByFrequency.frequencySort(case2);
+		SortCharactersByFrequency.frequencySort(case3);
+		SortCharactersByFrequency.frequencySort(case4);
 	}
 }
