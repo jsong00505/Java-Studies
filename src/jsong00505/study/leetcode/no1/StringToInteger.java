@@ -43,7 +43,9 @@ public class StringToInteger {
     		str = str.trim();
     		result = Integer.parseInt(str);
     	}catch(NumberFormatException nfe) {
-    		if(csf.isAlphaNumericString(str)) {
+    		if(csf.isAlphabeticString(str)) {
+    			result = 0;
+    		}else if(csf.isAlphaNumericString(str)) {
         		if(str.startsWith("+") || str.startsWith("-")) {
         			if(csf.isNumericString(str.substring(1))) {
         				if(str.startsWith("+")) {
@@ -52,8 +54,18 @@ public class StringToInteger {
         					result = -2147483648;
         				}
         			}else {
-        				
+        				for(int i = 1;i<str.length();i++) {
+        					if(!csf.isNumericString(""+str.charAt(i))) {
+        						result = Integer.parseInt(str.substring(1,i));
+        					}
+        				}
         			}
+        		} else {
+        			for(int i = 0;i<str.length();i++) {
+    					if(!csf.isNumericString(""+str.charAt(i))) {
+    						result = Integer.parseInt(str.substring(0,i));
+    					}
+    				}
         		}
     		} else if(csf.isNumericString(str)) {
     			result = 2147483647;
