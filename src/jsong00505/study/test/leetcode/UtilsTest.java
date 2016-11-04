@@ -18,18 +18,27 @@ import org.junit.Test;
 public class UtilsTest {
 	//@Test
 	public void URLEncodeTest() throws UnsupportedEncodingException {
-		String encodingString ="Ksd/OVqaDtHTTTA+vXBC35/GJrU7Z7EYHfe8TYE6Cu9bYxalG/EA4v3o+aA/MWLoGIAe7dm2bUXl+rCF8PEjnQ==";
+		String encodingString1 ="Ksd/OVqaDtHTTTA+vXBC35/GJrU7Z7EYHfe8TYE6Cu9bYxalG/EA4v3o+aA/MWLoGIAe7dm2bUXl+rCF8PEjnQ==";
+		String case2 = "5fDl797cTER2itvddSelWX%2BKa6G%2BmlcFqARg3y06wrvNSuK3kdJM6mob29O0wPGt%0AgA3KwWFU4fjzedabLZ3F1noHXSamMGZrvLKm9MlEsSFmSrEALjRXrW%2BWOpuOAimq%0An3rCrjfFC54u%2F1EYtzZGcNSw%2BTLj2wqohwLphHq9jzs1wFEmjtPx6E%2BLAiBR4Lal%0AcU%2BORanFt%2F%2FHeRQyPRasBVgzVs%2BO1YWp9L9dBcrbmNwoDrUvtxGvmJzO2Iffk1x0%0AGoq9fUFSKGZaGXWTb8FkI%2FN07kwUrQ4DWXR7YXvKYdA%3D%0A";
+		
+		
 		String charsetName = "EUC-KR";
-		String encodeResult = URLEncoder.encode(encodingString, charsetName);
-		System.out.println("ENCODE: " + encodeResult);
+		String encodeResult = URLEncoder.encode(encodingString1, charsetName);
+		System.out.println("ENCODE1: " + encodeResult);
+		System.out.println("ENCODE2: " + URLEncoder.encode(case2, charsetName));
 	}
 	
-	//@Test
+	@Test
 	public void URLDecodeTest() throws UnsupportedEncodingException {
 		String decodingString ="Ksd%2FOVqaDtHTTTA%2BvXBC35%2FGJrU7Z7EYHfe8TYE6Cu9bYxalG%2FEA4v3o%2BaA%2FMWLoGIAe7dm2bUXl%2BrCF8PEjnQ%3D%3D";
+		String case2 = "5fDl797cTER2itvddSelWX%2BKa6G%2BmlcFqARg3y06wrvNSuK3kdJM6mob29O0wPGt%0AgA3KwWFU4fjzedabLZ3F1noHXSamMGZrvLKm9MlEsSFmSrEALjRXrW%2BWOpuOAimq%0An3rCrjfFC54u%2F1EYtzZGcNSw%2BTLj2wqohwLphHq9jzs1wFEmjtPx6E%2BLAiBR4Lal%0AcU%2BORanFt%2F%2FHeRQyPRasBVgzVs%2BO1YWp9L9dBcrbmNwoDrUvtxGvmJzO2Iffk1x0%0AGoq9fUFSKGZaGXWTb8FkI%2FN07kwUrQ4DWXR7YXvKYdA%3D%0A";
+		String case3 = "%2FFiVcF%2Bx2FZH80kjT%2BR9L915YkGP1TMJVU5hOMpneA8%3D";
+		
 		String charsetName = "UTF-8";
 		String decodeResult = URLDecoder.decode(decodingString, charsetName);
-		System.out.println("DECODE: " + decodeResult);
+		System.out.println("DECODE1: " + decodeResult);
+		System.out.println("DECODE2: " + URLDecoder.decode(case2, charsetName));
+		System.out.println("DECODE3: " + URLDecoder.decode(case3, charsetName));
 	}
 	/*
 	 * reference: https://www.lesstif.com/pages/viewpage.action?pageId=14745703
@@ -102,7 +111,7 @@ public class UtilsTest {
 		System.out.println(ReverseString.reverseString(strX));
 	}
 	
-	@Test
+	//@Test
 	public void stringFormatTest() {
 		String case1 = "111111111111111";
 		String case2 = "1111111111111111111a";
