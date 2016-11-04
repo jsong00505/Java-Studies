@@ -43,16 +43,21 @@ public class StringToInteger {
     		str = str.trim();
     		result = Integer.parseInt(str);
     	}catch(NumberFormatException nfe) {
-  		
-    		
-    		if(str.startsWith("-") && csf.isNumericString(str.substring(1))) {
-    			result = -2147483648;
-    		} else if(str.startsWith("+") && csf.isNumericString(str.substring(1))) { 
-    			result = 2147483647;
+    		if(csf.isAlphaNumericString(str)) {
+        		if(str.startsWith("+") || str.startsWith("-")) {
+        			if(csf.isNumericString(str.substring(1))) {
+        				if(str.startsWith("+")) {
+        					result = 2147483647;
+        				} else {
+        					result = -2147483648;
+        				}
+        			}else {
+        				
+        			}
+        		}
     		} else if(csf.isNumericString(str)) {
     			result = 2147483647;
-    		}
-
+    		} 
     	}
         return result;
     }
