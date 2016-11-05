@@ -1,6 +1,5 @@
 package jsong00505.study.leetcode.no1;
 
-import com.sun.tools.javac.util.StringUtils;
 import jsong00505.core.utils.SortingMathods;
 
 import java.util.*;
