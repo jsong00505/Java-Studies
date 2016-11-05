@@ -17,6 +17,17 @@ Just check out here, https://leetcode.com.
 
 * so those are packaged in "jsong00505.core.utils".
 
+## Code For Seoul
+
+### Let's Learn JAVA.
+
+I have attended there twice, and I have learned how to explain about JAVA grammar by who can speak native American.
+Hope to teach other people somewhere with my skills.
+
+If you are interested in this meeting, you can join [here](https://www.meetup.com/Learn-To-Code-Seoul/)!!
+
+We can make world better by ourselves.
+
 ## Test
 
 * I choose JUnit4 for testing library.
