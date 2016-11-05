@@ -29,6 +29,6 @@ Just check out here, https://leetcode.com.
 
 ## License
 
-```Jsong's study``` is Copyright 2016 Jsong. It is free, and may be redistributed under the terms specified in the [LICENSE](http://choosealicense.com/licenses/mit/) file.
+`Jsong's study` is Copyright 2016 Jsong. It is free, and may be redistributed under the terms specified in the [LICENSE](http://choosealicense.com/licenses/mit/) file.
 
 
