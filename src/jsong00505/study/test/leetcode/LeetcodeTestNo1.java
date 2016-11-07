@@ -3,6 +3,7 @@ package jsong00505.study.test.leetcode;
 import static org.junit.Assert.*;
 import jsong00505.study.leetcode.no1.FindMedianSortedArrays;
 import jsong00505.study.leetcode.no1.LongestPalindrome;
+import jsong00505.study.leetcode.no1.PalindromeNumber;
 import jsong00505.study.leetcode.no1.ReverseInteger;
 import jsong00505.study.leetcode.no1.RomanToInt;
 import jsong00505.study.leetcode.no1.StringToInteger;
@@ -75,7 +76,7 @@ public class LeetcodeTestNo1 {
 		
 	}
 	
-	@Test
+	//@Test
 	public void stringToIntegerTest() {
 		System.out.println(":::STRING TO INTEGER TEST:::");
 		
@@ -106,5 +107,21 @@ public class LeetcodeTestNo1 {
 		assertEquals(123, StringToInteger.myAtoi(case11), 0);
 		assertEquals(0, StringToInteger.myAtoi(case12), 0);
 
+	}
+	
+	@Test
+	public void palilndromeNumberTest() {
+		int case1 = -1000;
+		int case2 = 0;
+		int case3 = 111211;
+		int case4 = -11211;
+		int case5 = 1001;
+		
+
+		assertFalse(PalindromeNumber.isPalindrome(case1));
+		assertTrue(PalindromeNumber.isPalindrome(case2));
+		assertFalse(PalindromeNumber.isPalindrome(case3));
+		assertFalse(PalindromeNumber.isPalindrome(case4));
+		assertTrue(PalindromeNumber.isPalindrome(case5));
 	}
 }
