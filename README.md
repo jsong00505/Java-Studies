@@ -1,5 +1,13 @@
 # Jsong's Study
 ---
+
+## How it works
+
+1. Type `git clone https://github.com/jsong00505/Jsong-Study-Java.git` in your command window
+2. That is all you can do
+3. Play around
+
+
 ## LeetCode
 
 * LeetCode is one of online judge platforms for preparing technical coding interviews and assessing my knowledge of data structures and algorithms.
