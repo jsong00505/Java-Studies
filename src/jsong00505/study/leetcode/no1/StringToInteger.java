@@ -63,6 +63,7 @@ public class StringToInteger {
     	            	// bug fix: case "+-2"
     	            	if(i == 1 && csf.isNonNumericString(""+str.charAt(i))) {
     	            		doubleVal = 0;
+    	            		break;
     	            	} else if(csf.isNonNumericString(""+str.charAt(i))) {
     	                    doubleVal = Double.parseDouble(str.substring(1,i));
     	                    if(str.startsWith("-")) {
