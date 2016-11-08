@@ -78,7 +78,7 @@ public class LeetcodeTestNo1 {
 		
 	}
 	
-	//@Test
+	@Test
 	public void stringToIntegerTest() {
 		System.out.println(":::STRING TO INTEGER TEST:::");
 		
@@ -88,30 +88,40 @@ public class LeetcodeTestNo1 {
 		String case4 = "    010";		// 10
 		String case5 = "  -0012a42";	// -12
 		String case6 = "aa12";			// 0
-		String case7 = "   +0 123";		// 123
+		String case7 = "   0 123";      // 0
 		String case8 = "2147483648";	// 2147483647
 		String case9 = "+2147483648";	// 2147483647
 		String case10 = "-2147483649";	// -2147483648
 		String case11 = "123   456";	// 123
 		String case12 = "";
+		String case13 = "  123   456";  // 123
+	    String case14 = "   +0 123";    // 0
+	    String case15 = "-2147483649aaaa"; // -2147483648
+	    String case16 = "+-2";			// 0
 		
 		
+
 		assertEquals(100, StringToInteger.myAtoi(case1), 0);
 		assertEquals(-100, StringToInteger.myAtoi(case2), 0);
 		assertEquals(0, StringToInteger.myAtoi(case3), 0);
 		assertEquals(10, StringToInteger.myAtoi(case4), 0);
 		assertEquals(-12, StringToInteger.myAtoi(case5), 0);
 		assertEquals(0, StringToInteger.myAtoi(case6), 0);
-		assertEquals(123, StringToInteger.myAtoi(case7), 0);
+		assertEquals(0, StringToInteger.myAtoi(case7), 0);
 		assertEquals(2147483647, StringToInteger.myAtoi(case8), 0);
 		assertEquals(2147483647, StringToInteger.myAtoi(case9), 0);
 		assertEquals(-2147483648, StringToInteger.myAtoi(case10), 0);
 		assertEquals(123, StringToInteger.myAtoi(case11), 0);
 		assertEquals(0, StringToInteger.myAtoi(case12), 0);
+		assertEquals(123, StringToInteger.myAtoi(case13), 0);
+		assertEquals(0, StringToInteger.myAtoi(case14), 0);
+		assertEquals(-2147483648, StringToInteger.myAtoi(case15), 0);
+		assertEquals(0, StringToInteger.myAtoi(case16), 0);
+
 
 	}
 	
-	@Test
+	//@Test
 	public void palilndromeNumberTest() {
 		int case1 = -1000;
 		int case2 = 0;

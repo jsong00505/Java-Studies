@@ -60,7 +60,10 @@ public class StringToInteger {
     	            }
     	        } else {
     	            for(int i = 1;i<str.length();i++) {
-    	                if(csf.isNonNumericString(""+str.charAt(i))) {
+    	            	// bug fix: case "+-2"
+    	            	if(i == 1 && csf.isNonNumericString(""+str.charAt(i))) {
+    	            		doubleVal = 0;
+    	            	} else if(csf.isNonNumericString(""+str.charAt(i))) {
     	                    doubleVal = Double.parseDouble(str.substring(1,i));
     	                    if(str.startsWith("-")) {
     	                        doubleVal = doubleVal * (-1);
