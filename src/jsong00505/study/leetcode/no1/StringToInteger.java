@@ -34,6 +34,9 @@ public class StringToInteger {
 	 * problems: you could see how many errors I faces. *Shake My Head*
 	 * I need to fix my whole logic. (03/11/16)
 	 * 
+	 * 
+	 * 
+	 * Beats 1.52% of java submissions. I need to refactor this code
 	 */
     public static int myAtoi(String str) {
     	int result = 0;
@@ -43,7 +46,12 @@ public class StringToInteger {
     		//str = str.replaceAll("\\s+",""); 
     		str = str.trim();
     		//result = Integer.parseInt(str);
-    		doubleVal = Double.parseDouble(str);
+    		if(str.contains("e") || str.contains("E")) {
+    			// bug fix: case "   -115579378e25"
+    			throw new NumberFormatException();
+    		} else {
+        		doubleVal = Double.parseDouble(str);
+    		}
     	}catch(NumberFormatException nfe) {
     	    if("".equals(str)){
     	        doubleVal = 0;
@@ -80,7 +88,8 @@ public class StringToInteger {
     	    }else {
     	        for(int i = 0;i<str.length();i++) {
                     if(csf.isNonNumericString(""+str.charAt(i))) {
-                        doubleVal = Integer.parseInt(str.substring(0,i));
+                    	// bug fix: case "       11504069574n"
+                        doubleVal = Double.parseDouble(str.substring(0,i));
                         break;
                     }
                 }

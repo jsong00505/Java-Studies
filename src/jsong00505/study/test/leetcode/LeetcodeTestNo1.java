@@ -99,7 +99,8 @@ public class LeetcodeTestNo1 {
 	    String case15 = "-2147483649aaaa"; // -2147483648
 	    String case16 = "+-2";			// 0
 	    String case17 = "  +  413";			// 0
-	    String case18 = "       11504069574n"; //
+	    String case18 = "       11504069574n"; // 2147483647
+	    String case19 = "   -115579378e25"; // -115579378
 		
 
 		assertEquals(100, StringToInteger.myAtoi(case1), 0);
@@ -118,6 +119,9 @@ public class LeetcodeTestNo1 {
 		assertEquals(0, StringToInteger.myAtoi(case14), 0);
 		assertEquals(-2147483648, StringToInteger.myAtoi(case15), 0);
 		assertEquals(0, StringToInteger.myAtoi(case16), 0);
+		assertEquals(0, StringToInteger.myAtoi(case17), 0);
+		assertEquals(2147483647, StringToInteger.myAtoi(case18), 0);
+		assertEquals(-115579378, StringToInteger.myAtoi(case19), 0);
 
 
 	}
