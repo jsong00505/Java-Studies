@@ -9,6 +9,8 @@ import jsong00505.study.leetcode.no1.RomanToInt;
 import jsong00505.study.leetcode.no1.StringToInteger;
 import jsong00505.study.leetcode.no1.ZigZagConversion;
 
+import jsong00505.study.leetcode.no1.*;
+
 import org.junit.Test;
 
 public class LeetcodeTestNo1 {
