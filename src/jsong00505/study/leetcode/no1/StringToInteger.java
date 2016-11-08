@@ -37,39 +37,58 @@ public class StringToInteger {
 	 */
     public static int myAtoi(String str) {
     	int result = 0;
+    	double doubleVal = 0;
     	CheckStringFormat csf = new CheckStringFormat();
     	try {
     		//str = str.replaceAll("\\s+",""); 
     		str = str.trim();
-    		result = Integer.parseInt(str);
+    		//result = Integer.parseInt(str);
+    		doubleVal = Double.parseDouble(str);
     	}catch(NumberFormatException nfe) {
-    		if(csf.isAlphabeticString(str)) {
-    			result = 0;
-    		}else if(csf.isAlphaNumericString(str)) {
-        		if(str.startsWith("+") || str.startsWith("-")) {
-        			if(csf.isNumericString(str.substring(1))) {
-        				if(str.startsWith("+")) {
-        					result = 2147483647;
-        				} else {
-        					result = -2147483648;
-        				}
-        			}else {
-        				for(int i = 1;i<str.length();i++) {
-        					if(!csf.isNumericString(""+str.charAt(i))) {
-        						result = Integer.parseInt(str.substring(1,i));
-        					}
-        				}
-        			}
-        		} else {
-        			for(int i = 0;i<str.length();i++) {
-    					if(!csf.isNumericString(""+str.charAt(i))) {
-    						result = Integer.parseInt(str.substring(0,i));
-    					}
-    				}
-        		}
-    		} else if(csf.isNumericString(str)) {
-    			result = 2147483647;
-    		} 
+    	    if("".equals(str)){
+    	        doubleVal = 0;
+    	    }else if(csf.isNonNumericString(str)) {
+    	    
+    	        doubleVal = 0;
+    	    }else if(str.startsWith("+") || str.startsWith("-")) {
+    	        if(csf.isNumericString(str.substring(1))) {
+    	            if(str.startsWith("+")) {
+    	                doubleVal = 2147483647;
+    	            }
+    	            else if(str.startsWith("-")) {
+    	                doubleVal = - 2147483648;
+    	            }
+    	        } else {
+    	            for(int i = 1;i<str.length();i++) {
+    	                if(csf.isNonNumericString(""+str.charAt(i))) {
+    	                    doubleVal = Double.parseDouble(str.substring(1,i));
+    	                    if(str.startsWith("-")) {
+    	                        doubleVal = doubleVal * (-1);
+    	                    }
+    	                    break;
+    	                }
+    	            }
+    	        }
+    	    }else if(csf.isNumericString(str)){
+    	        doubleVal = 2147483647;
+    	    }else if(csf.isNonNumericString(str.substring(0,1))){
+    	        doubleVal = 0;
+    	    }else {
+    	        for(int i = 0;i<str.length();i++) {
+                    if(csf.isNonNumericString(""+str.charAt(i))) {
+                        doubleVal = Integer.parseInt(str.substring(0,i));
+                        break;
+                    }
+                }
+    	    }
+    	}finally {
+    	    if(doubleVal >= 2147483647){
+    	        result = 2147483647;
+    	    }else if(doubleVal <= -2147483648){
+    	        result = -2147483648;
+    	    }else {
+    	        result = (int)doubleVal;
+    	    }
     	}
         return result;
     }

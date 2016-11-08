@@ -24,5 +24,13 @@ public class CheckStringFormat {
 		}
 		return false;
 	}
+	
+	public static boolean isNonNumericString(String str) {
+		String regex = "^[\\D]+$";
+		if(str.matches(regex)) {
+			return true;
+		}
+		return false;
+	}
 
 }

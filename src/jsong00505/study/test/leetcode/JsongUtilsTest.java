@@ -86,7 +86,7 @@ public class JsongUtilsTest {
 	 * new Character.toString('c')
 	 * "" + 'c'
 	 */
-	//@Test
+	@Test
 	public void stringCharAtTest() {
 		String str = "Hello World!";
 		HashMap<String, Integer> hm = new HashMap<>();
@@ -97,6 +97,7 @@ public class JsongUtilsTest {
 		System.out.println("charAt: " + "A".charAt(0));
 		System.out.println(hm.get(new Character(str.charAt(0)).toString()));
 		System.out.println(sb.toString());
+		System.out.println(CheckStringFormat.isNonNumericString("NOINT"));
 	}
 	
 	//@Test
