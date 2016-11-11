@@ -1,5 +1,8 @@
 package jsong00505.study.leetcode.no1;
 
+import java.util.HashMap;
+
+
 /**
  * Created by jsong on 10/29/16.
  */
@@ -15,57 +18,172 @@ public class LongestPalindrome {
      * 1. I just checked odd numbers of string's length -> need to add to check even one by 16.10.31
      * 2. TIME LIMIT EXCEEDED -> "ibvjkmpyzsifuxcabqqpahjdeuzaybqsrsmbfplxycsafogotliyvhxjtkrbzqxlyfwujzhkdafhebvsdhkkdbhlhmaoxmbkqiwiusngkbdhlvxdyvnjrzvxmukvdfobzlmvnbnilnsyrgoygfdzjlymhprcpxsnxpcafctikxxybcusgjwmfklkffehbvlhvxfiddznwumxosomfbgxoruoqrhezgsgidgcfzbtdftjxeahriirqgxbhicoxavquhbkaomrroghdnfkknyigsluqebaqrtcwgmlnvmxoagisdmsokeznjsnwpxygjjptvyjjkbmkxvlivinmpnpxgmmorkasebngirckqcawgevljplkkgextudqaodwqmfljljhrujoerycoojwwgtklypicgkyaboqjfivbeqdlonxeidgxsyzugkntoevwfuxovazcyayvwbcqswzhytlmtmrtwpikgacnpkbwgfmpavzyjoxughwhvlsxsgttbcyrlkaarngeoaldsdtjncivhcfsaohmdhgbwkuemcembmlwbwquxfaiukoqvzmgoeppieztdacvwngbkcxknbytvztodbfnjhbtwpjlzuajnlzfmmujhcggpdcwdquutdiubgcvnxvgspmfumeqrofewynizvynavjzkbpkuxxvkjujectdyfwygnfsukvzflcuxxzvxzravzznpxttduajhbsyiywpqunnarabcroljwcbdydagachbobkcvudkoddldaucwruobfylfhyvjuynjrosxczgjwudpxaqwnboxgxybnngxxhibesiaxkicinikzzmonftqkcudlzfzutplbycejmkpxcygsafzkgudy"
      * -> I need another solution for that...
+     * 
+     * Strategy
+     * 1.
      */
+    
     public static String longestPalindrome(String s) {
         int strLen = s.length();
-        String preStr = "";
-        String postStr = "";
-        String longestStr = "";
-        int middle = 0; 
-        // check 
-        for(int i = 0; i<strLen; i++) {
-        	if(i == 0) {
-        		longestStr = s.substring(0, 1);
-    			continue;
-    		}
-        	for(int j = 0; j<strLen-i;j++) {
-        		/*
-        		if((j+i+1) == s.length()) {
-            		System.out.println("str: " + s.substring(j));
-        		}else {
-            		System.out.println("str: " + s.substring(j, j+i+1));
-        		} */
-
-
-        		// get middle index of string
-        		middle = ((j+i) + j) / 2;
-        		if(i % 2 != 0) {
-        			//EVEN
-        			preStr = s.substring(j,middle+1);
-        		} else {
-        			//ODD
-            		preStr = s.substring(j,middle);
-        		}
-
-        		//System.out.println("i: " + i + ", j: " + j+ ", m: " + middle);
-        		if((j+i+1) == s.length()) {
-        			postStr = s.substring(middle+1);
-        		}else {
-        			postStr = s.substring(middle+1, j+i+1);
-        		}
-        		
-        		//System.out.println("postStr: " + postStr);
-        		postStr = reverseString(postStr);
-        		//System.out.println("PRE: " + preStr + ", POST: " + postStr);
-        		if(preStr.equals(postStr)) {
-        			longestStr = s.substring(j, j+i+1);
-        			break;
-        		}
-        	}
-        	 //System.out.println(">> DONE");
+        int longest = 0;
+        boolean temp = false;
+        String result = "";
+        
+        boolean palinMatrix[][] = new boolean[strLen][strLen];
+        
+        for(int i=0; i<strLen; i++) {
+            palinMatrix[i][i] = true;
         }
-        //System.out.println(">> longest: " + longestStr);
-        return longestStr;
+        
+        for(int i=0;i<strLen-1;i++) {
+            if(s.charAt(i) == s.charAt(i+1)) {
+                palinMatrix[i][i+1] = true;
+                if(longest < 2) {
+                    result = s.substring(i, i+2);
+                    longest = 2;
+                } 
+            }else {
+                palinMatrix[i][i+1] = false;
+                if(longest < 1) {
+                    result = s.substring(i, i+1);
+                    longest = 1;
+                } 
+            }
+        }
+        for(int i=0;i<strLen-2;i++) {
+            int k = 0;
+            for(int j=strLen-i-2;j>0;j--) {
+                
+                palinMatrix[k][j+1] = (s.charAt(k) == s.charAt(j+2)) && palinMatrix[k+1][j];
+                if(palinMatrix[k][j+1]) {
+                    if(longest < (j+1)-k+1) {
+                        result = s.substring(k, j+2);
+                        longest = (j+1)-k+1;
+                    }
+                }
+                k++;
+            }
+        }
+        
+        for(int i=0;i<strLen;i++) {
+            for(int j=0;j<strLen;j++) {
+                System.out.printf(palinMatrix[i][j] + "\t");
+            }
+            System.out.println("");
+        }
+        System.out.println("");
+        return result;
+    }
+    /**find the longest palindromic substring*/
+    public static String longestPalindromeSol2(String s) {
+        if (s.length() == 1) {
+            return s;
+        }
+        char[] chs = s.toCharArray();
+        int[] result = new int[2];
+        int position=0;
+
+        while (chs.length-position>(result[1]-result[0])/2){
+            int tmp=position+1;
+            if (tmp==chs.length)
+                break;
+            while (chs[position]==chs[tmp]){
+                tmp++;
+                if (tmp==chs.length)
+                    break;
+            }
+
+            int[] tmptag=findThelongest(position-1,tmp,chs);
+            
+            if (tmptag[1]-tmptag[0]>result[1]-result[0])
+                result=tmptag;
+            
+            position=tmp;
+        }
+        StringBuilder bd=new StringBuilder();
+        for(int i=result[0];i<=result[1];i++){
+            bd.append(chs[i]);
+        }
+        return bd.toString();
+    }
+
+    private static int[] findThelongest(int left, int right, char[] chs) {
+        int[] r=new int[2];
+        while (left>=0&&right<chs.length){
+            if (chs[left]!=chs[right]){
+                break;
+            }
+            left--;
+            right++;
+        }
+        r[0]=left+1;
+        r[1]=right-1;
+        
+        return r;
+    }
+    
+    
+    public static String longestPalindromeSol1(String s) {
+        
+        int n = s.length();
+        boolean[][] dp = new boolean[n][n];
+        
+        int max = 1;
+        int start = 0, end = 0;
+        
+        for(int i = 0; i < n; i++)
+        {
+            dp[i][i] = true;
+        }
+        
+        for(int i = 0; i < n - 1; i++)
+        {
+            if(s.charAt(i) == s.charAt(i + 1))
+            {
+                dp[i][i + 1] = true;
+                max = 2;
+                start = i;
+                end = i + 1;
+            }
+            else
+            {
+                dp[i][i + 1] = false;
+            }
+        }
+        
+        for(int k = 3; k <= n; k++)
+        {
+            for(int i = 0; i < n - k + 1; i++)
+            {
+                int j = i + k - 1;
+                
+                System.out.println("dp["+(i + 1)+"]["+(j - 1)+"] => " + dp[i + 1][j - 1]);
+                System.out.println("s.charAt("+i+") == s.charAt("+j+") => "+(s.charAt(i) == s.charAt(j)));
+                
+                dp[i][j] = dp[i + 1][j - 1] && (s.charAt(i) == s.charAt(j));
+                System.out.println("[RESULT]dp["+i+"]["+j+"] => "+ dp[i][j]);
+                
+                if(dp[i][j])
+                {
+                    if(k > max)
+                    {
+                        max = k;
+                        start = i;
+                        end = j;
+                    }
+                }
+                
+            }
+        }
+        
+        for(int i=0; i< n; i++) {
+            for(int j=0;j<n;j++) {
+                System.out.printf(dp[i][j] + "\t");
+            }
+            System.out.println("");
+        }
+        return s.substring(start, end + 1);
+        
     }
 
     /*
