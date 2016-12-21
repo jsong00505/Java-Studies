@@ -3,6 +3,7 @@ package jsong00505.core.utils;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.Security;
+import java.util.Arrays;
 
 import org.apache.commons.codec.binary.Base64;
 
@@ -37,6 +38,7 @@ public class Cryptography {
 			byte[] raw = md.digest();
 			byte[] encodedBytes = Base64.encodeBase64(raw);
 			passACL = new String(encodedBytes);
+			
 		} catch(Exception e) {
 			System.out.print("암호화 에러" + e.toString());
 	    }
@@ -51,7 +53,7 @@ public class Cryptography {
 			md.update(strData.getBytes());
 			
 			byte[] digest = md.digest();
-			
+
 			BASE64Encoder encoder = new BASE64Encoder();
 
 			hashdata = encoder.encode(digest);
