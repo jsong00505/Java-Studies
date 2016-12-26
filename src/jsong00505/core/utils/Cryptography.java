@@ -26,7 +26,7 @@ public class Cryptography {
 		return "";
 	}
 	
-	public String md5HexBaseEncrypt(String strData) { // ¾ÏÈ£È­ ½ÃÅ³ µ¥ÀÌÅÍ
+	public String md5HexBaseEncrypt(String strData) { // ì•”í˜¸í™” ì‹œí‚¬ ë°ì´í„°
 		String passACL = null;
 
 		MessageDigest md = null;
@@ -39,13 +39,13 @@ public class Cryptography {
 			byte[] encodedBytes = Base64.encodeBase64(raw);
 			passACL = new String(encodedBytes);
 		} catch(Exception e) {
-			System.out.print("¾ÏÈ£È­ ¿¡·¯" + e.toString());
+			System.out.print("ì•”í˜¸í™” ì—ëŸ¬" + e.toString());
 	    }
 		
-		return passACL;	// ¾ÏÈ£È­µÈ µ¥ÀÌÅÍ¸¦ ¸®ÅÏ...
+		return passACL;	// ì•”í˜¸í™”ëœ ë°ì´í„°ë¥¼ ë¦¬í„´...
 	}
 	
-	public String sha256Encrypt(String strData) { // ¾ÏÈ£È­ ½ÃÅ³ µ¥ÀÌÅÍ
+	public String sha256Encrypt(String strData) { // ì•”í˜¸í™” ì‹œí‚¬ ë°ì´í„°
 		String passACL = null;
 
 		MessageDigest md = null;
@@ -59,10 +59,10 @@ public class Cryptography {
 			passACL = new String(encodedBytes);
 			
 		} catch(Exception e) {
-			System.out.print("¾ÏÈ£È­ ¿¡·¯" + e.toString());
+			System.out.print("ì•”í˜¸í™” ì—ëŸ¬" + e.toString());
 	    }
 		
-		return passACL;	// ¾ÏÈ£È­µÈ µ¥ÀÌÅÍ¸¦ ¸®ÅÏ...
+		return passACL;	// ì•”í˜¸í™”ëœ ë°ì´í„°ë¥¼ ë¦¬í„´...
 	}
 	
 	public String sha256Encrypt2(String strData) {

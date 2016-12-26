@@ -26,12 +26,12 @@ public class OnetimeBillingTest {
 		requestData.put("Moid",			"187339");
 		requestData.put("Amt",			"1004");
 		requestData.put("GoodsName",	"billing_test");
-		requestData.put("BuyerName",	"ÃÖÁ¾±Ç");
+		requestData.put("BuyerName",	"John");
 		requestData.put("BuyerTel",		"01036214223");
 		requestData.put("BuyerEmail",	"");
 		requestData.put("MallIP",		"127.0.0.1");
 		
-		// ÇÒºÎ ¼³Á¤
+		// ï¿½Òºï¿½ ï¿½ï¿½ï¿½ï¿½
 		requestData.put("CardInterest",	"0");
 		requestData.put("CardQuota",	"00");
 		
@@ -73,7 +73,7 @@ public class OnetimeBillingTest {
 		requestData.put("BuyerEmail",	"");
 		requestData.put("MallIP",		"127.0.0.1");
 		
-		// ÇÒºÎ ¼³Á¤
+		// ï¿½Òºï¿½ ï¿½ï¿½ï¿½ï¿½
 		requestData.put("CardInterest",	"0");
 		requestData.put("CardQuota",	"0");
 		
