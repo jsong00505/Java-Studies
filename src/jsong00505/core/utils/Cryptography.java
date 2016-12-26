@@ -122,5 +122,4 @@ public class Cryptography {
 		char [] c = Hex.encodeHex(b);
 		return new String(c);
 	}
-
 }
