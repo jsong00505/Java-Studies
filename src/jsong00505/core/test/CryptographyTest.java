@@ -31,7 +31,7 @@ public class CryptographyTest {
 		
 	}
 	
-	@Test
+	//@Test
 	public void sha256HexHashTest() throws Exception {
 		String str = "hello";
 		
@@ -39,6 +39,17 @@ public class CryptographyTest {
 		
 		System.out.println("SHA-256: "+c.sha256HexEncrypt(str));
 		System.out.println("SHA-256 2: "+c.sha256HexEncrypt2(str));
+		
+	}
+	
+	@Test
+	public void md5HexBaseHashTest() throws Exception {
+		String str = "hello";
+		
+		Cryptography c = new Cryptography();
+		
+		System.out.println("MD-5: "+c.md5HexBaseEncrypt(str));
+
 		
 	}
 }
