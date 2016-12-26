@@ -31,7 +31,7 @@ public class OnetimeBillingTest {
 		requestData.put("BuyerEmail",	"");
 		requestData.put("MallIP",		"127.0.0.1");
 		
-		// �Һ� ����
+		// additional card information0
 		requestData.put("CardInterest",	"0");
 		requestData.put("CardQuota",	"00");
 		
@@ -73,7 +73,7 @@ public class OnetimeBillingTest {
 		requestData.put("BuyerEmail",	"");
 		requestData.put("MallIP",		"127.0.0.1");
 		
-		// �Һ� ����
+		// additional card information
 		requestData.put("CardInterest",	"0");
 		requestData.put("CardQuota",	"0");
 		

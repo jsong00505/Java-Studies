@@ -12,45 +12,43 @@ public class NicepayOnetimeBillingProcess {
 		
 		try{
 			connector = new NicePayWebConnector();
-			connector.setNicePayHome(requestData.get("SERVER_HOME_PATH"));			// nicepay.properties 위치 기술	
+			connector.setNicePayHome(requestData.get("SERVER_HOME_PATH"));	
 			
-			connector.addRequestData("EncodeKey",	requestData.get("EncodeKey"));	// 상점키			            
+			connector.addRequestData("EncodeKey",	requestData.get("EncodeKey"));			            
 				
-			connector.addRequestData("BillKey",		requestData.get("BillKey"));	// 빌키			
-			connector.addRequestData("MID",			requestData.get("MID"));		// 상점 아이디			
-			connector.addRequestData("Moid",		requestData.get("Moid"));		// 주문번호			
-			connector.addRequestData("Amt",			requestData.get("Amt"));		// 결제 금액			
-			connector.addRequestData("GoodsName",	requestData.get("GoodsName"));	// 상품명			
-			connector.addRequestData("BuyerName",	requestData.get("BuyerName"));	// 구매자
-			connector.addRequestData("BuyerTel",	requestData.get("BuyerTel"));	// 구매자 전화번호
-			connector.addRequestData("BuyerEmail",	requestData.get("BuyerEmail"));	// 구매자 E-Mail			
-			connector.addRequestData("MallIP",		requestData.get("MallIP"));		// 몰 IP
+			connector.addRequestData("BillKey",		requestData.get("BillKey"));			
+			connector.addRequestData("MID",			requestData.get("MID"));			
+			connector.addRequestData("Moid",		requestData.get("Moid"));			
+			connector.addRequestData("Amt",			requestData.get("Amt"));			
+			connector.addRequestData("GoodsName",	requestData.get("GoodsName"));			
+			connector.addRequestData("BuyerName",	requestData.get("BuyerName"));
+			connector.addRequestData("BuyerTel",	requestData.get("BuyerTel"));
+			connector.addRequestData("BuyerEmail",	requestData.get("BuyerEmail"));			
+			connector.addRequestData("MallIP",		requestData.get("MallIP"));
 			
-			// 할부 설정
-			connector.addRequestData("CardInterest",requestData.get("CardInterest"));	// 무이자 여부  0: 일반, 1:무이자
-			connector.addRequestData("CardQuota",	requestData.get("CardQuota"));	// 할부 개월수 일시불 : 00 ,2개월 :02
+			
+			connector.addRequestData("CardInterest",requestData.get("CardInterest"));
+			connector.addRequestData("CardQuota",	requestData.get("CardQuota"));
 		
 			if("Y".equals(requestData.get("AdditionalFee"))) {
-				connector.addRequestData("SupplyAmt",	requestData.get("SupplyAmt"));	// 공급가액			
-				connector.addRequestData("GoodsVat",	requestData.get("GoodsVat"));	// 부가세			
-				connector.addRequestData("ServiceAmt",	requestData.get("ServiceAmt"));	// 봉사료			
-				connector.addRequestData("TaxFreeAmt",	requestData.get("TaxFreeAmt"));	// 면세
+				connector.addRequestData("SupplyAmt",	requestData.get("SupplyAmt"));			
+				connector.addRequestData("GoodsVat",	requestData.get("GoodsVat"));			
+				connector.addRequestData("ServiceAmt",	requestData.get("ServiceAmt"));			
+				connector.addRequestData("TaxFreeAmt",	requestData.get("TaxFreeAmt"));
 			}
-			
-												
-			// 고정값
-			connector.addRequestData("actionType", "PY0");              // 고정, 수정금지
-			connector.addRequestData("PayMethod", "BILL");              // 고정, 수정금지
+				
+			connector.addRequestData("actionType", "PY0");
+			connector.addRequestData("PayMethod", "BILL");
 			connector.requestAction();
 					
-			String resultCode	= connector.getResultData("ResultCode");	// 결과코드 (성공 :3001 ,이외 실패)
-			String resultMsg	= connector.getResultData("ResultMsg");		// 결과 메시지
-			String tid			= connector.getResultData("TID");				// 거래 아이디
-			String authDate		= connector.getResultData("AuthDate");		// 승인 날짜
-			String authCode		= connector.getResultData("AuthCode");		// 승인 번호
-			String cardCode		= connector.getResultData("CardCode");		// 카드사코드
-			String cardName		= connector.getResultData("CardName");		// 카드사명
-			String cardNo		= connector.getResultData("CardNo");			// 카드번호
+			String resultCode	= connector.getResultData("ResultCode");
+			String resultMsg	= connector.getResultData("ResultMsg");
+			String tid			= connector.getResultData("TID");
+			String authDate		= connector.getResultData("AuthDate");
+			String authCode		= connector.getResultData("AuthCode");
+			String cardCode		= connector.getResultData("CardCode");
+			String cardName		= connector.getResultData("CardName");
+			String cardNo		= connector.getResultData("CardNo");
 			
 			result.put("ResultMsg", resultMsg);
 			result.put("ResultCode", resultCode);
