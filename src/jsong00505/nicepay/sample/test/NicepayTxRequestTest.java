@@ -7,7 +7,7 @@ import jsong00505.nicepay.sample.NicepayTxRequest;
 import org.junit.Test;
 
 public class NicepayTxRequestTest {
-	@Test
+	//@Test
 	public void testRequest() {
 		NicepayTxRequest txRequest = new NicepayTxRequest();
 		

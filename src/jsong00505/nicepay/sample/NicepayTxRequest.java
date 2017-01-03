@@ -3,6 +3,7 @@ package jsong00505.nicepay.sample;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import kr.co.nicepay.module.lite.NicePayWebConnector;
 import kr.co.nicevan.nicepay.adapter.etc.HttpServletRequestMock;
 import kr.co.nicevan.nicepay.adapter.etc.HttpServletResponseMock;
 import kr.co.nicevan.nicepay.adapter.web.NicePayHttpServletRequestWrapper;
@@ -93,4 +94,5 @@ public class NicepayTxRequest {
 		}
 		return resMap;
 	}
+	
 }
