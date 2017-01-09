@@ -10,24 +10,24 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class HttpUrlConnectionUtil {
 
-	private final String USER_AGENT = "Mozilla/5.0";
+	//private final String USER_AGENT = "Mozilla/5.0";
 
 	public static void main(String[] args) throws Exception {
 
 		HttpUrlConnectionUtil http = new HttpUrlConnectionUtil();
 
 		System.out.println("Testing 1 - Send Http GET request");
-		http.sendGet();
+		http.sendGet("https://www.naver.com");
 
 		System.out.println("\nTesting 2 - Send Http POST request");
-		http.sendPost();
+		http.sendPost("https://www.naver.com");
 
 	}
 
 	// HTTP GET request
-	private void sendGet() throws Exception {
+	private void sendGet(String reqURL) throws Exception {
 
-		String url = "http://www.google.com/search?q=mkyong";
+		String url = reqURL;
 
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -36,7 +36,7 @@ public class HttpUrlConnectionUtil {
 		con.setRequestMethod("GET");
 
 		//add request header
-		con.setRequestProperty("User-Agent", USER_AGENT);
+		//con.setRequestProperty("User-Agent", USER_AGENT);
 
 		int responseCode = con.getResponseCode();
 		System.out.println("\nSending 'GET' request to URL : " + url);
@@ -58,15 +58,15 @@ public class HttpUrlConnectionUtil {
 	}
 
 	// HTTP POST request
-	private void sendPost() throws Exception {
+	private void sendPost(String reqURL) throws Exception {
 
-		String url = "https://selfsolve.apple.com/wcResults.do";
+		String url = reqURL;
 		URL obj = new URL(url);
 		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 
 		//add reuqest header
 		con.setRequestMethod("POST");
-		con.setRequestProperty("User-Agent", USER_AGENT);
+		//con.setRequestProperty("User-Agent", USER_AGENT);
 		con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
 
 		String urlParameters = "sn=C02G8416DRJM&cn=&locale=&caller=&num=12345";
