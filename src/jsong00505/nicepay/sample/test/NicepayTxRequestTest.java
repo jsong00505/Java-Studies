@@ -35,7 +35,7 @@ public class NicepayTxRequestTest {
 		reqMap.put("CardExpire", "");
 		reqMap.put("CardInterest", "0");
 		reqMap.put("CardQuota", "00");
-		reqMap.put("CardNo", "9410618583496736");
+		reqMap.put("CardNo", "");
 		reqMap.put("CardPwd", "");
 		reqMap.put("BuyerAuthNum","880101");
 		reqMap.put("CardPoint","0");
