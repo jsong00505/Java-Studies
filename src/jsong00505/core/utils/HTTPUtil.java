@@ -51,10 +51,9 @@ public class HTTPUtil {
 		StringBuffer sendBuffer = new StringBuffer();
 		StringBuffer recvBuffer = new StringBuffer();
 		try {
-			
-			log.info(pid + "REQUEST URL:[{}]", actionUrl);
-			log.info(pid + "REQUEST DATA:[{}]", sendData);
-			
+			System.out.println("REQUEST URL:[{}]" + actionUrl);
+			System.out.println("REQUEST DATA:[{}]" + sendData);
+
 			sendBuffer.append("m=").append(URLEncoder.encode(sendData, encoding));
 			
 			url = new URL(actionUrl);
@@ -69,12 +68,12 @@ public class HTTPUtil {
 			pw.flush();
 			
 			statusCode = conn.getResponseCode();
-			log.info(pid + "RESPONSE CODE: " + statusCode);
+			System.out.println("RESPONSE CODE: " + statusCode);
 			resultReader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 			for(String temp; (temp = resultReader.readLine()) != null;) {
 				recvBuffer.append(temp).append("\n");
 			}
-			log.info(pid + "RESPONSE DATA:[{}]", recvBuffer.toString().trim());
+			System.out.println("RESPONSE DATA:[{}]" + recvBuffer.toString().trim());
 //			log.debug(pid + "RESPONSE > " + new String(recvBuffer.toString().getBytes(), "euc-kr"));
 			
 			if(!(statusCode == HttpURLConnection.HTTP_OK)) {
