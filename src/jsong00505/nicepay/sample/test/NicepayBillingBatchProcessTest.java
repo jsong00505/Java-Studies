@@ -13,25 +13,25 @@ import org.junit.Test;
 public class NicepayBillingBatchProcessTest {
 	@Test
 	public void testRequest() {
-		NicepayBillingBatchProcess nbbp = new NicepayBillingBatchProcess("DEV");
+		NicepayBillingBatchProcess nbbp = new NicepayBillingBatchProcess("STAGING");
 		HashMap<String, String> reqObjData = new HashMap<>();
 		HashMap<String, JSONObject> reqArrData  = new HashMap<>();
 		
 		String reqDate = getyyyyMMddHHmmss();
-		String merchantKey = "";
+		String merchantKey = "b+zhZ4yOZ7FsH8pm5lhDfHZEb79tIwnjsdA0FBXh86yLc6BJeFVrZFXhAoJ3gEWgrWwN+lJMV0W4hvDdbe4Sjw==";
 		String Amt = "2008";
 		
 		reqObjData.put("mid", "nictest04m");
 		reqObjData.put("reqDate", reqDate);
 		reqObjData.put("authString", getAuthString(reqDate, merchantKey, Amt));
 		reqObjData.put("utrId", "TEST_" + reqDate);
-		reqObjData.put("reqCnt", "1");
+		reqObjData.put("reqCnt", "2");
 		
 		for(int i=0; i < 2; i++ ) {
 			JSONObject jsonObj = new JSONObject();
-			jsonObj.put("seqNo", i);
-			jsonObj.put("billkey", "");
-			jsonObj.put("moid", reqDate+i);
+			jsonObj.put("seqNo", ""+i);
+			jsonObj.put("billKey", "BLKYnictest04m0000000000000000");
+			jsonObj.put("moid", "moid"+reqDate+i);
 			jsonObj.put("amt", "1004");
 			jsonObj.put("goodsName", "NICE_"+i);
 			jsonObj.put("buyerName", "Shaun");
