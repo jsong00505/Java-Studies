@@ -32,7 +32,7 @@ public class Cryptography {
 		MessageDigest md = null;
 
 		try {
-			md = MessageDigest.getInstance("SHA-256");
+			md = MessageDigest.getInstance("MD5");
 			md.reset();
 			md.update(strData.getBytes());
 			byte[] raw = md.digest();
