@@ -7,27 +7,22 @@ import jsong00505.core.utils.Cryptography;
 
 
 public class CryptographyTest {
-	//@Test
+	String edi = "20170113152940";
+	String mid = "niceziki1m";
+	String amt = "1000";
+	String mkey = "YPKsZBEUihCptVNoM9c3sWhurHXeWXzUgqwiKl+UkxNy7wNdpmEf+DYP4T5mE0FMvMFG+zuzhG7vqJU281Ikbw==";
+	
+	String ptext = edi + mid + amt + mkey;
+	@Test
 	public void sha256HashTest() {
-		String str = "20161219161112lottewd01m10000rW/9BpWt+0YToW9yu1UQPij/GgZWx7nIThIKXMAct1pq2WIIWqQh8x+B2ebg1vpa1e7QgxqYLQUx+YoxktPKRw==";
-		String str2 = "20161219163903lottewd01m10000rW/9BpWt+0YToW9yu1UQPij/GgZWx7nIThIKXMAct1pq2WIIWqQh8x+B2ebg1vpa1e7QgxqYLQUx+YoxktPKRw==";
-		String str3 = "hello";
-		String str4 = "20161221092906nicepay00m1004EYzu8jGGMfqaDEp76gSckuvnaHHu+bC4opsSN6lHv3b2lurNYkVXrZ7Z1AoqQnXI3eLuaUFyoRNC6FkrzVjceg==";
 		
 		System.out.println(":::SHA-256 HASH TEST:::");
 		
 		Cryptography c = new Cryptography();
-		System.out.println("SHA-256: "+c.sha256Encrypt(str));
-		System.out.println("SHA-256 2: "+c.sha256Encrypt2(str));
+
 		
-		System.out.println("SHA-256: "+c.sha256Encrypt(str2));
-		System.out.println("SHA-256 2: "+c.sha256Encrypt2(str2));
-		
-		System.out.println("SHA-256: "+c.sha256Encrypt(str3));
-		System.out.println("SHA-256 2: "+c.sha256Encrypt2(str3));
-		
-		System.out.println("SHA-256: "+c.sha256Encrypt(str4));
-		System.out.println("SHA-256 2: "+c.sha256Encrypt2(str4));
+		System.out.println("SHA-256: "+c.sha256Encrypt(ptext));
+		System.out.println("SHA-256 2: "+c.sha256Encrypt2(ptext));
 		
 	}
 	
@@ -44,11 +39,10 @@ public class CryptographyTest {
 	
 	@Test
 	public void md5HexBaseHashTest() throws Exception {
-		String str = "hello";
 		
 		Cryptography c = new Cryptography();
 		
-		System.out.println("MD-5: "+c.md5HexBaseEncrypt(str));
+		System.out.println("MD-5: "+c.md5HexBaseEncrypt(ptext));
 
 		
 	}
