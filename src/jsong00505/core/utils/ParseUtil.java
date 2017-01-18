@@ -7,7 +7,7 @@ public class ParseUtil {
 		StringBuilder resultSb = new StringBuilder();
 
 		for(String key: reqMap.keySet()) {
-			resultSb.append(key).append("=").append(reqMap.get(key));
+			resultSb.append(reqMap.get(key));
 		}
 		
 		return resultSb.toString();

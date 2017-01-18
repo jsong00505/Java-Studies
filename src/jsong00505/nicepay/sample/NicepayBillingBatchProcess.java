@@ -23,7 +23,6 @@ public class NicepayBillingBatchProcess {
 	}
 	
 	public NicepayBillingBatchProcess(String ReqType) {
-		System.out.println("ReqType: " + ReqType);
 		if("REAL".equals(ReqType)) {
 			reqURI = CommonConstants.NICEPAY_REAL_DOMAIN_URI;
 		} else if("STAGING".equals(ReqType)) {
@@ -34,7 +33,6 @@ public class NicepayBillingBatchProcess {
 			reqURI = CommonConstants.NICEPAY_REAL_DOMAIN_URI;
 		}
 		reqURI += CommonConstants.NICEPAY_BILLING_UPLOAD_API_PATH;
-		System.out.println("reqURI: " + reqURI);
 	}
 	public String doBillingBatchRequest(HashMap<String, String> reqObjData, HashMap<String, JSONObject> reqArrData) {
 		String result = "";
@@ -56,7 +54,6 @@ public class NicepayBillingBatchProcess {
 		
 		conn = new HTTPUtil(reqURI);
 		conn.setActionUrl(reqURI);
-		System.out.println(reqURI);
 		try {
 			result = conn.send(log, reqMap);
 		} catch (Exception e) {

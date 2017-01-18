@@ -51,8 +51,8 @@ public class HTTPUtil {
 		StringBuffer sendBuffer = new StringBuffer();
 		StringBuffer recvBuffer = new StringBuffer();
 		try {
-			System.out.println("REQUEST URL:[{}]" + actionUrl);
-			System.out.println("REQUEST DATA:[{}]" + sendData);
+			System.out.println("REQUEST URL:" + actionUrl);
+			System.out.println("REQUEST DATA:" + sendData);
 
 			sendBuffer.append("m=").append(URLEncoder.encode(sendData, encoding));
 			
@@ -73,7 +73,7 @@ public class HTTPUtil {
 			for(String temp; (temp = resultReader.readLine()) != null;) {
 				recvBuffer.append(temp).append("\n");
 			}
-			System.out.println("RESPONSE DATA:[{}]" + recvBuffer.toString().trim());
+			System.out.println("RESPONSE DATA:" + recvBuffer.toString().trim());
 //			log.debug(pid + "RESPONSE > " + new String(recvBuffer.toString().getBytes(), "euc-kr"));
 			
 			if(!(statusCode == HttpURLConnection.HTTP_OK)) {
