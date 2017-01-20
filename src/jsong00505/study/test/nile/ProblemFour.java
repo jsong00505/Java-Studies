@@ -5,8 +5,8 @@ import java.util.HashMap;
 public class ProblemFour {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String S="ba1";
-		String T="1Ad";
+		String S="ba2";
+		String T="2Ad";
 		
 		System.out.println("RESULT: " + solution(S, T));
 	}
