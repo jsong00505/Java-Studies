@@ -16,10 +16,10 @@ public class NicepayTxCancelRequestTest {
 		
 		double moid = Math.random();
 		
-		reqMap.put("MID", "mcatest01m");
+		reqMap.put("MID", "");
 		reqMap.put("Moid", "test"+moid);
-		reqMap.put("TID", "mcatest01m01011701191508475424");
-		reqMap.put("CancelAmt", "1004");
+		reqMap.put("TID", "");
+		reqMap.put("CancelAmt", "");
 		reqMap.put("CancelMsg", "test");
 		reqMap.put("CancelPwd", "123456");
 		
