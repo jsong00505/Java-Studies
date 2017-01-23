@@ -7,7 +7,7 @@ public class Day5Loops {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
         
-        for(int i = 1; i <= 9; i++) {
+        for(int i = 1; i <= 10; i++) {
         	System.out.println(String.format("%d x %d = %d", n, i, n*i));
         }
     }
