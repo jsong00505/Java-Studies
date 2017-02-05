@@ -38,6 +38,12 @@ class Difference {
   				}
   			}
   		}
+  		
+  		// avoid double for loop, and here is my thought
+  		//
+  		// sorting first, and classify values with positive and negative side.
+  		// then compare min and max values in each positive and negative side.
+  		// chose the bigger value between both values.
   	}
   	
 }
