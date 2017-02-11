@@ -1,4 +1,4 @@
-package jsong00505study.hack30days.bst;
+package jsong00505.study.hack30days.bst;
 
 public class BinarySearchTree {
 	public static void main(String[] args) {

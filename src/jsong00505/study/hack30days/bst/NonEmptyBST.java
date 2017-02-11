@@ -1,4 +1,4 @@
-package jsong00505study.hack30days.bst;
+package jsong00505.study.hack30days.bst;
 
 public class NonEmptyBST<D extends Comparable> implements Tree<D> {
 	// we don't know whether left, right are EmptyBST or NonEmptyBST 
