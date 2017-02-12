@@ -28,7 +28,6 @@ public class Day25RunningTimeAndComplexity {
         for(int i = 0; i < T; i++) {
         	int n = sc.nextInt();
         	String primeMessage = "Prime";
-        	// j cannot be zero because n cannot be divide by zero
         	
         	if((n == 1 || n % 2 == 0) && n != 2) {
         		primeMessage = "Not prime";
