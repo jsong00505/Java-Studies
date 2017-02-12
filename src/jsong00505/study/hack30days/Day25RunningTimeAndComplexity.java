@@ -1,10 +1,13 @@
 package jsong00505.study.hack30days;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Day25RunningTimeAndComplexity {
     public static void main(String[] args) {
-        /* Enter your code here. */
+    	/* Enter your code here. */
         Scanner sc = new Scanner(System.in);
         
         
@@ -20,22 +23,24 @@ public class Day25RunningTimeAndComplexity {
          *  scan test cases for the number of test case
          *  1. brute force method 
          */
+        ArrayList<Integer> nonePrimeList = new ArrayList<>();
         
         for(int i = 0; i < T; i++) {
-        	long n = sc.nextLong();
+        	int n = sc.nextInt();
         	String primeMessage = "Prime";
         	// j cannot be zero because n cannot be divide by zero
-        	// Also, cannot be one because every n's remainder is zero by one
-        	// n should be long type because n's maximum is 2*10^9
-        	for(long j = 2; j < n; j++) {
-        		if(n % j == 0) {
-        			primeMessage = "Not prime";
-        		}
-        	}
         	
+        	if((n == 1 || n % 2 == 0) && n != 2) {
+        		primeMessage = "Not prime";
+        	} else {
+            	for(int j = 3; j <= Math.sqrt(n); j++) {
+            		if(n % j == 0) {
+            			primeMessage = "Not prime";
+            			break;
+            		}
+            	}
+        	}
         	System.out.println(primeMessage);
         }
-        
-        
     }
 }
