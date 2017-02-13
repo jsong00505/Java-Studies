@@ -42,28 +42,37 @@ public class LongestPalindrome {
          * | 1 1
          * | 0 1
          */
+        int maxLength = 1;
+        int len = 0;
+        String temp = s.substring(0, 1);
         
         for(int i = 0; i < strLen - 1; i++) {
         	if(s.charAt(i) == s.charAt(i + 1)) {
         		pArr[i][i + 1] = 1;
+        		if(s.substring(i, i+2).length() > maxLength) {
+    				temp = s.substring(i, i+2);
+    				maxLength = s.substring(i, i+2).length();
+    			}
         	} else {
         		pArr[i][i + 1] = 0;
         	}
         }
-        
+
         for(int i = 2; i < strLen; i++) {
         	for(int j = i; j < strLen; j++) {
         		if(pArr[j - i + 1][j - 1] == 1 && s.charAt(j - i) == s.charAt(j)) {
         			pArr[j - i][j] = 1;
+        			
+        			if(s.substring(j-i, j+1).length() > maxLength) {
+        				temp = s.substring(j-i, j+1);
+        				maxLength = s.substring(j-i, j+1).length();
+        			}
         		}
         			
         	}
         }
         
-        int maxLength = 0;
-        int len = 0;
-        String temp = "";
-        for(int i = 0; i < strLen; i++) {
+/*        for(int i = 0; i < strLen; i++) {
         	for(int j = 0; j < strLen; j++) {
         		System.out.print(pArr[i][j] + "\t");
         		if(pArr[i][j] == 1 && s.substring(i, j+1).length() > maxLength) {
@@ -72,7 +81,7 @@ public class LongestPalindrome {
         		}
         	}
         	System.out.print("\n");
-        }
+        }*/
         return temp;
     }
     /**find the longest palindromic substring*/
@@ -158,11 +167,8 @@ public class LongestPalindrome {
             {
                 int j = i + k - 1;
                 
-                System.out.println("dp["+(i + 1)+"]["+(j - 1)+"] => " + dp[i + 1][j - 1]);
-                System.out.println("s.charAt("+i+") == s.charAt("+j+") => "+(s.charAt(i) == s.charAt(j)));
                 
                 dp[i][j] = dp[i + 1][j - 1] && (s.charAt(i) == s.charAt(j));
-                System.out.println("[RESULT]dp["+i+"]["+j+"] => "+ dp[i][j]);
                 
                 if(dp[i][j])
                 {
