@@ -25,54 +25,55 @@ public class LongestPalindrome {
     
     public static String longestPalindrome(String s) {
         int strLen = s.length();
-        int longest = 0;
-        boolean temp = false;
-        String result = "";
+        int[][] pArr = new int[strLen][strLen];
         
-        boolean palinMatrix[][] = new boolean[strLen][strLen];
+        /*
+         *  init array
+         *  | 1 0
+         *  | 0 1
+         */
         
-        for(int i=0; i<strLen; i++) {
-            palinMatrix[i][i] = true;
+        for(int i = 0; i < strLen; i++) {
+        	pArr[i][i] = 1;
         }
         
-        for(int i=0;i<strLen-1;i++) {
-            if(s.charAt(i) == s.charAt(i+1)) {
-                palinMatrix[i][i+1] = true;
-                if(longest < 2) {
-                    result = s.substring(i, i+2);
-                    longest = 2;
-                } 
-            }else {
-                palinMatrix[i][i+1] = false;
-                if(longest < 1) {
-                    result = s.substring(i, i+1);
-                    longest = 1;
-                } 
-            }
-        }
-        for(int i=0;i<strLen-2;i++) {
-            int k = 0;
-            for(int j=strLen-i-2;j>0;j--) {
-                
-                palinMatrix[k][j+1] = (s.charAt(k) == s.charAt(j+2)) && palinMatrix[k+1][j];
-                if(palinMatrix[k][j+1]) {
-                    if(longest < (j+1)-k+1) {
-                        result = s.substring(k, j+2);
-                        longest = (j+1)-k+1;
-                    }
-                }
-                k++;
-            }
+        /*
+         * check second value
+         * | 1 1
+         * | 0 1
+         */
+        
+        for(int i = 0; i < strLen - 1; i++) {
+        	if(s.charAt(i) == s.charAt(i + 1)) {
+        		pArr[i][i + 1] = 1;
+        	} else {
+        		pArr[i][i + 1] = 0;
+        	}
         }
         
-        for(int i=0;i<strLen;i++) {
-            for(int j=0;j<strLen;j++) {
-                System.out.printf(palinMatrix[i][j] + "\t");
-            }
-            System.out.println("");
+        for(int i = 2; i < strLen; i++) {
+        	for(int j = i; j < strLen; j++) {
+        		if(pArr[j - i + 1][j - 1] == 1 && s.charAt(j - i) == s.charAt(j)) {
+        			pArr[j - i][j] = 1;
+        		}
+        			
+        	}
         }
-        System.out.println("");
-        return result;
+        
+        int maxLength = 0;
+        int len = 0;
+        String temp = "";
+        for(int i = 0; i < strLen; i++) {
+        	for(int j = 0; j < strLen; j++) {
+        		System.out.print(pArr[i][j] + "\t");
+        		if(pArr[i][j] == 1 && s.substring(i, j+1).length() > maxLength) {
+        			temp = s.substring(i, j+1);
+        			maxLength = s.substring(i, j+1).length();
+        		}
+        	}
+        	System.out.print("\n");
+        }
+        return temp;
     }
     /**find the longest palindromic substring*/
     public static String longestPalindromeSol2(String s) {
