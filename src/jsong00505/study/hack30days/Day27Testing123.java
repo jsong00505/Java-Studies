@@ -1,5 +1,7 @@
 package jsong00505.study.hack30days;
 
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Day27Testing123 {
@@ -15,23 +17,34 @@ public class Day27Testing123 {
         /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
         Scanner sc = new Scanner(System.in);
 		
-		int numberOfTestCases = sc.nextInt();
+        Random rand = new Random();
+        ArrayList<String> result = new ArrayList<>();
+        
+		int numberOfTestCases = rand.nextInt(5);
+		System.out.println(numberOfTestCases);
 		
 		for(int i = 0; i < numberOfTestCases; i++) {
-			int totalStudent = sc.nextInt();
-			int expectedOnTimeStudent = sc.nextInt();
+			int totalStudent = rand.nextInt(200);
+			int expectedOnTimeStudent = rand.nextInt(totalStudent);
 			int countOnTimeStudent = 0;
+			System.out.println(totalStudent + " " + expectedOnTimeStudent);
 			for(int j = 0; j < totalStudent; j++) {
-				if(sc.nextInt() > 0) {
+				int arrivedTime = rand.nextInt(2000) - 1000;
+				System.out.print(arrivedTime + " ");
+				if(arrivedTime > 0) {
 					countOnTimeStudent++;
 				}
 			}
-			
+			System.out.print("\n");
 			if(expectedOnTimeStudent > countOnTimeStudent) {
-				System.out.println("YES");
+				result.add("YES");
 			} else {
-				System.out.println("NO");
+				result.add("NO");
 			}
 		}
+		
+/*		for(int i = 0; i < numberOfTestCases; i++) {
+			System.out.println(result.get(i));
+		}*/
     }
 }
