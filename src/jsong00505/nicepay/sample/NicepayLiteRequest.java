@@ -20,16 +20,9 @@ public class NicepayLiteRequest {
 
 			// 2. 요청 페이지 파라메터 셋팅
 			//connector.setRequestData(request);
-
-			connector.addRequestData("TID",reqMap.get("TID"));
-			connector.addRequestData("CancelAmt", reqMap.get("CancelAmt"));
-			connector.addRequestData("CancelMsg", reqMap.get("CancelMsg"));
-			connector.addRequestData("PartialCancelCode", reqMap.get("PartialCancelCode"));
-			connector.addRequestData("MID",reqMap.get("MID"));
-			connector.addRequestData("actionType", reqMap.get("actionType"));
-			connector.addRequestData("CancelPwd", reqMap.get("CancelPwd"));
-			connector.addRequestData("CancelIP", reqMap.get("CancelIP"));	
-			connector.addRequestData("CancelID", reqMap.get("CancelID"));
+			for(String key: reqMap.keySet()) {
+				connector.addRequestData(key, reqMap.get(key));
+			}
 			
 			connector.requestAction();
 
