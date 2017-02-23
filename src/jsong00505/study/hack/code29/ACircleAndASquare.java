@@ -38,11 +38,9 @@ public class ACircleAndASquare {
 		}
 
 		// draw square
-		int a = getA(x1, y1, x3, y3);
-		int c = getC(x1, y1, x3, y3);
 		for(int i = 0; i < h; i++) {
 			for(int j = 0; j < w; j++) {
-				if (isInSquareBoundary(j, i, a, c, x1, y1, x3, y3)) {
+				if (test(j, i, x1, y1, x3, y3)) {
 					canvas[i][j] = '#';
 				}
 			}
@@ -68,24 +66,25 @@ public class ACircleAndASquare {
 		return false;
 	}
 
-	public static boolean isInSquareBoundary(int xPos, int yPos, int a, int c, int x1, int y1, int x3, int y3) {
-
-		double d = Math.abs(a * xPos + yPos + c) / Math.sqrt(a * a + 1);
+	public static boolean isInSquareBoundary(int xPos, int yPos, int x1, int y1, int x3, int y3) {
+		System.out.println(xPos + "," + yPos);
+		// y = mx + b
+		// mx -y + b = 0
+		double slopeM = 0;
+		if((y3 - y1) != 0) {
+			slopeM = (x3 - x1) / (double) (y3 - y1);
+		}
+		
+		double valueOfB = y3 - slopeM * x3;
+		
+		// abs(ax + by + c) / sqrt(a^2 + b^2)
+		double d = Math.abs(slopeM * xPos - yPos + valueOfB) / Math.sqrt(slopeM * slopeM + 1);
 
 		if(isSmallerThanSin45(getDistance(x1, y1, xPos, yPos) ,d)
-				&& isSmallerThanSin45(getDistance(x3, y3, xPos, yPos) ,d)
-				&& xPos >= (x1 - 1) && xPos <= (x3 - 1)) {
+				&& isSmallerThanSin45(getDistance(x3, y3, xPos, yPos) ,d)) {
 			return true;
 		}
 		return false;
-	}
-
-	public static int getA(int x1, int y1, int x3, int y3) {
-		return (y3 - y1) / (x3 - x1);
-	}
-
-	public static int getC(int x1, int y1, int x3, int y3) {
-		return (x3 * y1 - x1 * y3) / (x3 - x1);
 	}
 
 	public static double getDistance(int x1, int y1, int x2, int y2) {
@@ -93,9 +92,26 @@ public class ACircleAndASquare {
 	}
 
 	public static boolean isSmallerThanSin45(double d1, double d2) {
-		if(d1 / d2 <= Math.sqrt(2) /(double) 2) {
+		System.out.println(d1 + "," + d2);
+		System.out.println();
+		System.out.println((Math.sqrt(2) /(double) 2));
+		if((d2 / d1) <= Math.sin(Math.toRadians(45)) 
+				&& d1 != 0 && d2 != 0) {
 			return true;
 		}
 		return false;
 	}
+	
+	public static boolean test(int cx, int cy, int x1, int y1, int x2, int y2) {
+		//angle = atan2(y1x2-x1y2, x1x2+y1y2)
+		// atan((y2-cy) / (x2 -cx)) - atan((y1-cy) / (x1-cx))
+		if((Math.atan((y2-cy)/(x2-cx) - Math.atan((y1-cy)/(x1-cx))) <= Math.toRadians(45))
+				&& x2 - cx != 0 && x1 - cx != 0)  {
+			return true;
+		}
+		
+		
+		return false;
+	}
+	
 }
