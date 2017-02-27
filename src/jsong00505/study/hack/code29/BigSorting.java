@@ -1,5 +1,7 @@
 package jsong00505.study.hack.code29;
 
+import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -37,5 +39,35 @@ public class BigSorting {
 			System.out.println(unsorted[i]);
 		}
 
+		new BigSorting().run();
+	}
+
+
+	// SOLUTION
+	void solve(Scanner in, PrintWriter out) {
+		String a[] = new String[in.nextInt()];
+		for (int i = 0; i < a.length; i++) {
+			a[i] = in.next();
+		}
+
+		Arrays.sort(a, (left, right) -> {
+			if (left.length() != right.length()) {
+				return left.length() - right.length();
+			} else {
+				return left.compareTo(right);
+			}
+		});
+		for (String s : a) {
+			out.println(s);
+		}
+	}
+
+	void run() {
+		try (
+			Scanner in = new Scanner(System.in);
+			PrintWriter out = new PrintWriter(System.out);
+		) {
+			solve(in, out);
+		}
 	}
 }
